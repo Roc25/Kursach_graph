@@ -29,14 +29,11 @@
         private void InitializeComponent()
         {
             this.Field = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.Field.SuspendLayout();
             this.SuspendLayout();
             // 
             // Field
             // 
-            this.Field.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.Field.Controls.Add(this.button1);
+            this.Field.BackColor = System.Drawing.Color.Gray;
             this.Field.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Field.Location = new System.Drawing.Point(0, 0);
             this.Field.Margin = new System.Windows.Forms.Padding(0);
@@ -45,16 +42,6 @@
             this.Field.TabIndex = 0;
             this.Field.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1_Paint);
             this.Field.DoubleClick += new System.EventHandler(this.Field_DoubleClick);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(331, 163);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.DragEnter += new System.Windows.Forms.DragEventHandler(this.button1_DragEnter);
             // 
             // Form1
             // 
@@ -65,7 +52,6 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.Field.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -73,7 +59,6 @@
         #endregion
 
         private System.Windows.Forms.Panel Field;
-        private System.Windows.Forms.Button button1;
     }
 }
 
