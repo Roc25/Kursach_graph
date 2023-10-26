@@ -28,5 +28,27 @@ namespace Kursach_graph {
             Graphs[id1, id2] = !Graphs[id1, id2];
             Graphs[id2, id1] = !Graphs[id2, id1];
         }
+
+        private int[,] reb;
+
+        public int MaxParS(int[] g, List<int[,]> tmp) {
+
+            for (int i = 0; i < reb.Length; i++) {
+                for (int j = 0; j < 2; j++) {
+                    if (reb[i,j] == g[0] || reb[i,j] == g[1]) { 
+                        
+                    }
+                }
+            }
+
+            return 0;
+        }
+
+        public int Search() {
+            for (int i = 0; i < reb.Length; i++) {
+            }
+
+            return 0;
+        }
     }
 }
