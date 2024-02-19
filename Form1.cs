@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 using System.Windows.Shapes;
 
@@ -45,12 +47,12 @@ namespace Kursach_graph {
         List<Button> btns = new List<Button>();
 
         private void DrawLines() {
-            g.Clear(Color.Gray);
+            g.Clear( Color.Gray );
             Pen p = new Pen( Color.Red, 2 );
 
-            for ( int i = 0; i < Graphs.Len; i++ ) {
-                for ( int j = 0; j < Graphs.Len; j++) {
-                    if (Graphs.Graphs[i,j]) {
+            for (int i = 0; i < Graphs.Len; i++) {
+                for (int j = 0; j < Graphs.Len; j++) {
+                    if (Graphs.Graphs[i, j]) {
                         Point f = btns[i].Location;
                         Point t = btns[j].Location;
 
@@ -62,19 +64,47 @@ namespace Kursach_graph {
 
         private void Graph_MouseClick( object sender, MouseEventArgs e ) {
             Button snd = sender as Button;
-            if ( selected == null ) { 
+            if (selected == null) {
                 selected = snd;
                 snd.BackColor = Color.Blue;
                 return;
             }
-            if ( selected == snd) {
+            if (selected == snd) {
                 selected = null;
                 snd.BackColor = Color.White;
                 return;
             }
 
-            Graphs.AddConnection((int) snd.Tag, (int) selected.Tag);
+            Graphs.AddConnection( (int) snd.Tag, (int) selected.Tag );
             DrawLines();
+        }
+
+        private void button1_Click( object sender, EventArgs e ) {
+            var par = Graphs.MaxParS();
+
+
+
+
+            Pen p = new Pen( Color.Green, 5 );
+            Point firstbtn = new Point();
+            Point secondbtn = new Point();
+
+            foreach (var item in par) {
+
+                foreach (var j in btns) {
+                    if ((int)j.Tag == item[0]) {
+                        firstbtn = j.Location;
+                    }
+                    if ((int) j.Tag == item[1]) {
+                        secondbtn = j.Location;
+                    }
+                }
+
+
+                g.DrawLine( p, firstbtn.X + 20, firstbtn.Y + 20, secondbtn.X + 20, secondbtn.Y + 20 );
+            }
+
+
         }
     }
 }
