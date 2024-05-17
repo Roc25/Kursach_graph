@@ -18,7 +18,11 @@ namespace Kursach_graph {
         public int AddGraph() {
             Len++;
             bool[,] n = new bool[Len, Len];
-            Array.Copy( Graphs, n, Graphs.Length );
+            for (int i = 0; i < Len - 1; i++) {
+                for (int j = 0;j < Len - 1; j++){
+                    n[i,j] = Graphs[i,j];
+                }
+            }
             Graphs = n;
 
             return Len - 1;
